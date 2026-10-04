@@ -1,0 +1,17 @@
+# Understanding Photosynthesis: Advanced Energy Conversion in Plants (v2)
+
+Photosynthesis is the key biochemical pathway by which photoautotrophic organisms convert light energy into cellular chemical energy.
+
+## Inputs & Environmental Mechanics
+1. Water (H2O): Transported via root pressure and transpiration pull through vascular xylem.
+2. Carbon Dioxide (CO2): Diffuses into mesophyll cells via regulated leaf stomata.
+3. Photons: Solar photons power the photo-excitation reaction.
+
+## Chlorophyll Pigments & Light Spectrum
+Photosynthesis occurs inside double-membraned chloroplasts. Thylakoid membranes harbor chlorophyll a and chlorophyll b pigments. Chlorophyll absorbs blue (430-450 nm) and red (640-660 nm) wavelengths while reflecting green light. Photolysis splits water molecules into protons, electrons, and oxygen gas.
+
+## Products & Cellular Storage
+1. Glucose (C6H12O6): Utilized immediately in cellular respiration or polymerized into starch grains.
+2. Oxygen Gas (O2): Diffuses out of leaf stomata into the atmosphere.
+
+Equation: 6 CO2 + 6 H2O + Light -> C6H12O6 + 6 O2.
