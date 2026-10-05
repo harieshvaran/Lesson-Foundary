@@ -1,0 +1,27 @@
+Task: Write {{num_items}} practice items at "{{difficulty}}" difficulty.
+
+UNIT SETTINGS
+- Target level: {{target_level}}
+- Difficulty: {{difficulty}} ({{difficulty_definition}})
+- Vocabulary level: {{vocabulary_level}}
+- Max length (words): {{max_length_words}}
+- Style notes: {{style_notes}}
+
+OBJECTIVES
+{{objectives_block}}
+
+EXPLANATION & EXAMPLE CONTEXT
+{{prior_context}}
+
+<SOURCE_DATA>
+{{source_chunks}}
+</SOURCE_DATA>
+
+Requirements:
+Easy: Bloom levels Remember/Understand, single-step, one concept per item.
+Advanced: Bloom levels Apply/Analyze/Evaluate, multi-step, combine at least two concepts or require justification.
+
+Each item: prompt, model_answer, marking_points, objective_id, source_chunk_ids, bloom_level.
+Items must differ structurally between levels, not only in wording.
+
+Return JSON matching PracticeAssetOutput schema strictly.

@@ -44,7 +44,8 @@ async def test_llm_provider_generate_structured():
 
     assert result.objective_id == "O1"
     assert result.status == "supported"
-    assert result.evidence_chunk_ids == ["S1", "S2"]
+    assert result.evidence_chunk_ids == ["S1"]
+
 
 
 @pytest.mark.asyncio

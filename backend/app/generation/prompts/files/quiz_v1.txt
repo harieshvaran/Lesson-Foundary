@@ -1,0 +1,27 @@
+Task: Write {{num_questions}} multiple-choice questions with an answer key.
+
+UNIT SETTINGS
+- Target level: {{target_level}}
+- Difficulty: {{difficulty}}
+- Vocabulary level: {{vocabulary_level}}
+- Max length (words): {{max_length_words}}
+- Answer reveal policy: {{answer_reveal_policy}}
+- Style notes: {{style_notes}}
+
+OBJECTIVES
+{{objectives_block}}
+
+<SOURCE_DATA>
+{{source_chunks}}
+</SOURCE_DATA>
+
+Requirements:
+- Distribute questions across objectives as evenly as possible.
+- Each question: stem, exactly 4 options labeled A to D, correct_label, rationale, objective_id, source_chunk_ids, bloom_level.
+- The stem must not contain or imply the correct answer. Distractors must be plausible and based on common errors.
+- No two questions may test the same fact in the same way.
+- The rationale must explain why the correct option is right using source-supported facts.
+- Match the difficulty definition. Do not vary difficulty by wording alone.
+- Every item MUST include a valid objective_id from the provided list and a non-empty list of source_chunk_ids cited from <SOURCE_DATA>.
+
+Return JSON matching the schema strictly.

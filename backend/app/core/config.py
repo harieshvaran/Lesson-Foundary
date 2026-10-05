@@ -19,6 +19,16 @@ class Settings(BaseSettings):
     LLM_API_BASE: str = "https://api.openai.com/v1"
     LLM_TIMEOUT_SECONDS: float = 30.0
 
+    # Guardrail Thresholds
+    GUARDRAIL_DUP_JACCARD_THRESHOLD: float = 0.70
+    GUARDRAIL_ANSWER_LEAKAGE_MIN_WORDS: int = 3
+    GUARDRAIL_CLAIM_OVERLAP_MIN_THRESHOLD: float = 0.20
+    GUARDRAIL_ENABLE_LLM_ENTAILMENT: bool = True
+    GUARDRAIL_MIN_OBJ_COVERAGE_RATIO: float = 0.15
+    GUARDRAIL_OBJ_IMBALANCE_STD_DEV_MULTIPLIER: float = 0.50
+    GUARDRAIL_EASY_BLOOM_MAX_RANK: int = 2
+    GUARDRAIL_ADVANCED_BLOOM_MIN_RANK: int = 3
+
     model_config = SettingsConfigDict(
         env_file=".env",
         env_file_encoding="utf-8",

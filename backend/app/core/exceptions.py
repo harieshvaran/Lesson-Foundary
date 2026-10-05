@@ -31,3 +31,14 @@ class LLMConfigurationError(LLMProviderError):
 class DatabaseError(LessonFoundryException):
     """Raised when database operational issues occur."""
     pass
+
+
+class ImmutableApprovedVersionException(LessonFoundryException):
+    """Raised when an operation attempts to update or delete an Approved item_version."""
+    pass
+
+
+class ApprovalBlockedException(LessonFoundryException):
+    """Raised when approval is blocked due to unresolved high-severity quality flags."""
+    pass
+

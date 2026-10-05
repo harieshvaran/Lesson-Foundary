@@ -1,0 +1,25 @@
+Task: Create one worked example that applies the explained concepts step by step.
+
+UNIT SETTINGS
+- Target level: {{target_level}}
+- Difficulty: {{difficulty}}
+- Vocabulary level: {{vocabulary_level}}
+- Style notes: {{style_notes}}
+
+OBJECTIVES
+{{objectives_block}}
+
+EXPLANATION CONTEXT
+{{explanation_context}}
+Key terms introduced: {{key_terms}}
+
+<SOURCE_DATA>
+{{source_chunks}}
+</SOURCE_DATA>
+
+Requirements:
+- Use only terms from key_terms and the explanation. Keep terminology identical.
+- The example must not contradict the explanation.
+- Each step: step_number, instruction, working, result, objective_id, source_chunk_ids, bloom_level.
+
+Return JSON matching ExampleAssetOutput schema strictly.

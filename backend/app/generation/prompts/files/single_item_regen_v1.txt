@@ -1,0 +1,16 @@
+Task: Regenerate ONE item. Do not modify or restate any other item.
+
+Item type: {{item_type}}
+Objective: {{objective_code}}: {{objective_text}}
+Teacher feedback (may be empty): {{teacher_feedback}}
+Existing items in this asset (must not be duplicated): {{existing_item_summaries}}
+
+UNIT SETTINGS
+- Target level: {{target_level}}
+- Difficulty: {{difficulty}}
+
+<SOURCE_DATA>
+{{source_chunks}}
+</SOURCE_DATA>
+
+Return JSON for exactly one item matching the schema strictly. Keep terminology consistent with the approved explanation.

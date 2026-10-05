@@ -47,3 +47,9 @@ def client(db_session):
 @pytest.fixture
 def test_double_llm():
     return TestDoubleLLMProvider()
+
+
+@pytest.fixture
+def sample_source_bytes():
+    return b"Photosynthesis converts carbon dioxide and water into glucose and oxygen using light energy absorbed by chlorophyll."
+

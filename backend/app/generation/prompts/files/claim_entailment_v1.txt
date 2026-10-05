@@ -1,0 +1,7 @@
+Task: Decide whether the cited source chunks support the claim.
+
+Claim: {{claim}}
+Cited chunks: {{chunks}}
+
+Return JSON: { "supported": true | false, "reason": "short explanation" }
+Use only the chunks provided. If the chunks do not clearly support the claim, return false.

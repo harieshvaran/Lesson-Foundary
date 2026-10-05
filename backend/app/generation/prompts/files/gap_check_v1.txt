@@ -1,0 +1,18 @@
+Task: Decide whether the source chunks contain enough information to teach and assess this objective.
+
+Objective ({{objective_code}}): {{objective_text}}
+
+<SOURCE_DATA>
+{{source_chunks}}
+</SOURCE_DATA>
+
+Return JSON:
+{
+  "objective_id": "{{objective_code}}",
+  "status": "supported" | "partial" | "unsupported",
+  "evidence_chunk_ids": ["S1", ...],
+  "missing_concepts": ["..."],
+  "reason": "one or two plain sentences for the teacher"
+}
+
+Be strict. Choose "supported" only if the chunks directly cover the concepts needed. If you are unsure, choose "partial". Do not use outside knowledge.

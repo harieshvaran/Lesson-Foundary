@@ -1,0 +1,20 @@
+Task: Write a concept explanation covering all objectives, using only the source chunks.
+
+UNIT SETTINGS
+- Target level: {{target_level}}
+- Difficulty: {{difficulty}}
+- Vocabulary level: {{vocabulary_level}}
+- Max length (words): {{max_length_words}}
+- Style notes: {{style_notes}}
+
+OBJECTIVES
+{{objectives_block}}
+
+<SOURCE_DATA>
+{{source_chunks}}
+</SOURCE_DATA>
+
+Produce 3 to 6 explanation blocks. Each block has: heading, body, objective_id, source_chunk_ids, bloom_level.
+Define key terms once and reuse the same wording later. List the key terms you introduced in "key_terms".
+
+Return JSON matching ExplanationAssetOutput schema strictly.

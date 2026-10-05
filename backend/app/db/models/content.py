@@ -2,9 +2,10 @@
 
 import uuid
 from datetime import datetime, timezone
-from sqlalchemy import String, Integer, JSON, DateTime, ForeignKey, Boolean, CheckConstraint
+from sqlalchemy import String, Integer, JSON, DateTime, ForeignKey, Boolean, CheckConstraint, event, inspect
 from sqlalchemy.orm import Mapped, mapped_column, relationship
 from backend.app.db.base import Base
+from backend.app.core.exceptions import ImmutableApprovedVersionException
 
 
 def utc_now():
@@ -49,7 +50,7 @@ class ItemVersion(Base):
 
     # Mandatory Provenance Fields (Rule 2.5: objective_id NOT NULL, source_chunk_ids non-empty)
     objective_id: Mapped[str] = mapped_column(String(36), ForeignKey("objectives.id"), nullable=False, index=True)
-    source_chunk_ids: Mapped[list] = mapped_column(JSON, nullable=False)  # validated in service layer to be non-empty list
+    source_chunk_ids: Mapped[list] = mapped_column(JSON, nullable=False)  # validated in schema & service layer to be non-empty list
 
     bloom_level: Mapped[str | None] = mapped_column(String(50), nullable=True)
     bloom_overridden: Mapped[bool] = mapped_column(Boolean, default=False, nullable=False)
@@ -68,3 +69,30 @@ class ItemVersion(Base):
     __table_args__ = (
         CheckConstraint("status IN ('Draft', 'Approved', 'Needs Revision')", name="check_item_version_status"),
     )
+
+
+# --- Strict Immutability Protections (Rule 3.1) ---
+
+@event.listens_for(ItemVersion, "before_update")
+def block_approved_item_version_update(mapper, connection, target: ItemVersion):
+    """Enforce rule 3.1: Approved item_versions are strictly immutable and cannot be modified."""
+    state = inspect(target)
+    history = state.get_history("status", True)
+    
+    # If the item version WAS ALREADY Approved prior to this update operation
+    is_previously_approved = (target.status == "Approved" and not history.has_changes()) or ("Approved" in history.deleted)
+
+    if is_previously_approved:
+        # Check if content, objective_id, or source_chunk_ids are being modified
+        content_history = state.get_history("content", True)
+        obj_history = state.get_history("objective_id", True)
+        chunk_history = state.get_history("source_chunk_ids", True)
+        if content_history.has_changes() or obj_history.has_changes() or chunk_history.has_changes():
+            raise ImmutableApprovedVersionException("Approved item versions are immutable. Content and provenance cannot be modified.")
+
+
+@event.listens_for(ItemVersion, "before_delete")
+def block_approved_item_version_delete(mapper, connection, target: ItemVersion):
+    """Enforce rule 3.1: Approved item_versions cannot be deleted."""
+    if target.status == "Approved":
+        raise ImmutableApprovedVersionException("Approved item versions are immutable and cannot be deleted.")

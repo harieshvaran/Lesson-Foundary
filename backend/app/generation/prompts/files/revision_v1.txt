@@ -1,0 +1,19 @@
+Task: Write a concise revision sheet.
+
+OBJECTIVES
+{{objectives_block}}
+
+EXPLANATION & EXAMPLE CONTEXT
+{{prior_context}}
+
+<SOURCE_DATA>
+{{source_chunks}}
+</SOURCE_DATA>
+
+Requirements:
+- 5 to 10 revision points. Each point must restate a concept already present in the explanation or example.
+- Do NOT introduce any concept, term or fact that is not in the explanation or example.
+- Each point: point, objective_id, source_chunk_ids, bloom_level.
+- Cover every objective at least once.
+
+Return JSON matching RevisionAssetOutput schema strictly.
